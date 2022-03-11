@@ -1,0 +1,19 @@
+domain: safaricom.et
+layout:
+- go.kubebuilder.io/v3
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
+projectName: nifop
+repo: github.com/kapkiai/nifiop
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: safaricom.et
+  group: nifitoolkit
+  kind: NifiCA
+  path: github.com/kapkiai/nifiop/api/v1alpha1
+  version: v1alpha1
+version: "3"

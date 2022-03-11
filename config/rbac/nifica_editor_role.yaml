@@ -1,0 +1,24 @@
+# permissions for end users to edit nificas.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: nifica-editor-role
+rules:
+- apiGroups:
+  - nifitoolkit.safaricom.et
+  resources:
+  - nificas
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - nifitoolkit.safaricom.et
+  resources:
+  - nificas/status
+  verbs:
+  - get

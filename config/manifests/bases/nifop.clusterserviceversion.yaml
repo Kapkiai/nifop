@@ -1,0 +1,48 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: '[]'
+    capabilities: Basic Install
+  name: nifop.v0.0.0
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+    owned:
+    - description: NifiCA is the Schema for the nificas API
+      displayName: Nifi CA
+      kind: NifiCA
+      name: nificas.nifitoolkit.safaricom.et
+      version: v1alpha1
+  description: An operator for apache nifi
+  displayName: nifi-operator
+  icon:
+  - base64data: ""
+    mediatype: ""
+  install:
+    spec:
+      deployments: null
+    strategy: ""
+  installModes:
+  - supported: false
+    type: OwnNamespace
+  - supported: false
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - nifi
+  links:
+  - name: Nifop
+    url: https://nifop.domain
+  maintainers:
+  - email: mathewkiprop17@gmail.com
+    name: Mathew
+  maturity: alpha
+  provider:
+    name: kapkiai
+    url: safaricom.et
+  version: 0.0.0

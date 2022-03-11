@@ -1,0 +1,33 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - nifitoolkit.safaricom.et
+  resources:
+  - nificas
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - nifitoolkit.safaricom.et
+  resources:
+  - nificas/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - nifitoolkit.safaricom.et
+  resources:
+  - nificas/status
+  verbs:
+  - get
+  - patch
+  - update
