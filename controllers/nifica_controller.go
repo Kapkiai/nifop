@@ -75,7 +75,7 @@ func (r *NifiCAReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 
 	var result *ctrl.Result
 
-	result, err = r.ensureDeployment(ctx, req, ca, r.caPod(*ca))
+	result, err = r.ensureDeployment(ctx, req, ca, r.caPod(ca))
 
 	if result != nil {
 		reqLogger.Info("Deployment found")

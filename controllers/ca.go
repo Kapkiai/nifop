@@ -12,7 +12,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 )
 
-func (r *NifiCAReconciler) caPod(cr v1alpha1.NifiCA) *appsv1.Deployment {
+func (r *NifiCAReconciler) caPod(cr *v1alpha1.NifiCA) *appsv1.Deployment {
 
 	labels := map[string]string{
 		"app": cr.Name,
@@ -38,19 +38,20 @@ func (r *NifiCAReconciler) caPod(cr v1alpha1.NifiCA) *appsv1.Deployment {
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
 						Image: cr.Spec.ImageName,
-						Name:  "nifi-ca",
+						// ImagePullPolicy: "",
+						Name: "nifi-ca",
 						Ports: []corev1.ContainerPort{{
 							ContainerPort: 9443,
 							Name:          "nifi-ca-port",
 						}},
-						Command: []string{"bash", "-ce", "../bin/tls-toolkit.sh server -c localhost -t 123456789123456778 -p 9443"},
+						Command: []string{"bash", "-ce", "./bin/tls-toolkit.sh server -c localhost -t 123456789123456778 -p 9443"},
 					}},
 				},
 			},
 		},
 	}
 
-	controllerutil.SetControllerReference(&cr, dep, r.Scheme)
+	controllerutil.SetControllerReference(cr, dep, r.Scheme)
 	return dep
 }
 
@@ -58,7 +59,7 @@ func (r *NifiCAReconciler) isCaUp(ctx context.Context, v *v1alpha1.NifiCA) bool 
 	dep := &appsv1.Deployment{}
 
 	err := r.Client.Get(ctx, types.NamespacedName{
-		Name:      "nifica-nifi-ca",
+		Name:      "nifi-ca",
 		Namespace: v.Namespace,
 	}, dep)
 	logger := log.FromContext(ctx)

@@ -16,7 +16,7 @@ func (r *NifiCAReconciler) ensureDeployment(ctx context.Context, req ctrl.Reques
 
 	err := r.Client.Get(ctx, types.NamespacedName{
 		Name:      dep.Name,
-		Namespace: instance.Namespace,
+		Namespace: dep.Namespace,
 	}, found)
 
 	logger := log.FromContext(ctx)

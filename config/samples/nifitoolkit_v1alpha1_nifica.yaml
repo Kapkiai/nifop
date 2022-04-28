@@ -4,5 +4,5 @@ metadata:
   name: nifica-sample
 spec:
   # TODO(user): Add fields here
-  imagename: "docker pull kapkiai/nifi-toolkit:1.15.1"
+  imagename: "kapkiai/nifi-toolkit:1.15.1"
   # services: "server"
